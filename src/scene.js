@@ -82,36 +82,64 @@ function iniScene() {
         //     use_conjugate: false,
         //     comment: 'This is the cell at the center of the slice'
         // },
+        // {
+        //     cell_num: 2,
+        //     phi: deg2rad(90), // angle between x and the projection of radious on xy
+        //     theta: deg2rad(0), // angle between radious and z
+        //     rho: 24000,
+        //     use_conjugate: true,
+        //     comment: 'looking at the face of the slice'
+        // },
+        // {
+        //     cell_num: 3,
+        //     phi: deg2rad(-90), // angle between x and the projection of radious on xy
+        //     theta: deg2rad(0), // angle between radious and z
+        //     rho: 24000,
+        //     use_conjugate: true,
+        //     comment: 'looking at the face of the slice'
+        // },
         {
-            cell_num: 2,
-            phi: deg2rad(90), // angle between x and the projection of radious on xy
-            theta: deg2rad(0), // angle between radious and z
-            rho: 17000,
+            cell_num: 4,
+            phi: deg2rad(-90), // angle between x and the projection of radious on xy
+            theta: deg2rad(180), // angle between radious and z
+            rho: 24000,
             use_conjugate: true,
             comment: 'looking at the face of the slice'
         },
         {
-            cell_num: 3,
+            cell_num: 5,
             phi: deg2rad(70),
             theta: deg2rad(60),
             rho: 1000,
         },
         {
-            cell_num: 4,
+            cell_num: 6,
             phi: deg2rad(80),
             theta: deg2rad(120),
             rho: 1000,
         },
         {
-            cell_num: 5,
+            cell_num: 7,
             phi: deg2rad(60),
             theta: deg2rad(190),
-            rho: 5000,
+            rho: 1000,
+        },
+        {
+            cell_num: 2,
+            phi: deg2rad(80),
+            theta: deg2rad(190),
+            rho: 30000,
         },
         ];
     var camera_positions = story_cells.map((item) => {
-        var id = item.cell_num - 1;
-        var centroid = CELL_DATA[id].sphere_position;
+        var id = item.cell_num - 4;
+        var centroid;
+        if (id <= 0) {
+            centroid = {x: 0, y: 0, z: 0}
+        } else {
+            centroid = CELL_DATA[id].sphere_position;
+        }
+
         var rho = item.rho
         var position = new THREE.Vector3().setFromSphericalCoords(rho, item.phi, item.theta).add(centroid)
         const mat = new THREE.Matrix4().lookAt(position, centroid, new THREE.Vector3(0, 1, 0))
