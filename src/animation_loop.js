@@ -225,7 +225,7 @@ function render() {
         }
         else{
             INSTANCEDMESH.front_face.instancedMesh.visible = true;
-            SCENE.children.filter(d => d.type === 'Points').forEach(d => d.visible=true)
+            // SCENE.children.filter(d => d.type === 'Points').forEach(d => d.visible=true)
             SCENE.children.filter(d => d.name === 'glyph_highlighting').forEach(d => SCENE.remove(d));
             HIGHLIGHTING_POINTS = null
             PREVIOUS_CELL_LABEL = null
