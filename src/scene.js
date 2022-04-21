@@ -129,49 +129,6 @@ function iniScene() {
             useSlerp: true,
         }
     })
-    const storyPoints = [
-        {
-            position: new THREE.Vector3(792.216963, 175.9380, 1000),
-            color: 0xff0000,
-            phi: Math.PI * 0.5,
-            theta: 0,
-            caption: 'This is a cell label 1643',
-        },
-        {
-            position: new THREE.Vector3(363, 1335, 800),
-            color: 0xffff00,
-            phi: Math.PI * 0.4,
-            theta: Math.PI * 0.0,
-            caption: 'This is a caption about the YELLOW cone',
-          },
-        {
-            position: new THREE.Vector3(0, 0, 15000),
-            color: 0xffff00,
-            phi: Math.PI * 1.0,
-            theta: Math.PI * 1.0,
-            caption: 'This is a caption about the YELLOW cone',
-          },
-        {
-            position: new THREE.Vector3(-518, -1230, 900),
-            color: 0xffff00,
-            phi: Math.PI * 0.4,
-            theta: Math.PI * 0.0,
-            caption: 'This is a caption about the YELLOW cone',
-          },
-    ];
-
-    const cameraPositions = storyPoints.map((item) => {
-        const position = new THREE.Vector3().setFromSphericalCoords(15, item.phi, item.theta).add(item.position)
-        const mat = new THREE.Matrix4().lookAt(position, item.position, new THREE.Vector3(0, 0, 0))
-        const quaternion = new THREE.Quaternion().setFromRotationMatrix(mat)
-
-        return {
-            position,
-            quaternion,
-            duration: 5,
-            useSlerp: true,
-        }
-    })
 
     CONTROLS = new ThreeStoryControls.StoryPointsControls(RIG, camera_positions, {
         cycle: true,
