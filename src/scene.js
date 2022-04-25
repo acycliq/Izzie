@@ -68,40 +68,40 @@ function iniScene() {
     var story_cells = [
         {
             cell_num: 1,
-            phi: deg2rad(60), // angle between x and the projection of radious on xy
-            theta: deg2rad(45), // angle between radious and z
+            phi: deg2rad(60), // angle between x and the projection of radius on xy
+            theta: deg2rad(45), // angle between radius and z
             rho: 27000,
             use_conjugate: false,
             comment: 'This is the cell at the center of the slice'
         },
         // {
         //     cell_num: 147,
-        //     phi: deg2rad(60), // angle between x and the projection of radious on xy
-        //     theta: deg2rad(-45), // angle between radious and z
+        //     phi: deg2rad(60), // angle between x and the projection of radius on xy
+        //     theta: deg2rad(-45), // angle between radius and z
         //     rho: 17000,
         //     use_conjugate: false,
         //     comment: 'This is the cell at the center of the slice'
         // },
         // {
         //     cell_num: 2,
-        //     phi: deg2rad(90), // angle between x and the projection of radious on xy
-        //     theta: deg2rad(0), // angle between radious and z
+        //     phi: deg2rad(90), // angle between x and the projection of radius on xy
+        //     theta: deg2rad(0), // angle between radius and z
         //     rho: 24000,
         //     use_conjugate: true,
         //     comment: 'looking at the face of the slice'
         // },
         // {
         //     cell_num: 3,
-        //     phi: deg2rad(-90), // angle between x and the projection of radious on xy
-        //     theta: deg2rad(0), // angle between radious and z
+        //     phi: deg2rad(-90), // angle between x and the projection of radius on xy
+        //     theta: deg2rad(0), // angle between radius and z
         //     rho: 24000,
         //     use_conjugate: true,
         //     comment: 'looking at the face of the slice'
         // },
         {
             cell_num: 4,
-            phi: deg2rad(-90), // angle between x and the projection of radious on xy
-            theta: deg2rad(180), // angle between radious and z
+            phi: deg2rad(-90), // angle between x and the projection of radius on xy
+            theta: deg2rad(180), // angle between radius and z
             rho: 24000,
             use_conjugate: true,
             comment: 'looking at the face of the slice'
