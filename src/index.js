@@ -162,3 +162,54 @@ function aggregate(data) {
     var aggData = dataManager(data);
     return aggData
 }
+
+
+function swapInstances(index1, index2, instancedMesh) {
+    swapMatrix(index1, index2, instancedMesh);
+    swapColors(index2, index1, instancedMesh);
+}
+
+
+function swapMatrix(index1, index2, instancedMesh){
+    var matrix_1 = new THREE.Matrix4();
+    var matrix_2 = new THREE.Matrix4();
+    instancedMesh.getMatrixAt(index1, matrix_1)
+    instancedMesh.getMatrixAt(index2, matrix_2)
+
+    instancedMesh.setMatrixAt(index1, matrix_2);
+    instancedMesh.setMatrixAt(index2, matrix_1);
+
+    instancedMesh.instanceMatrix.needsUpdate = true;
+	};
+
+function swapColors(index1, index2, instancedMesh) {
+    var color1 = new THREE.Color()
+    var color2 = new THREE.Color()
+    instancedMesh.getColorAt(index1, color1)
+    instancedMesh.getColorAt(index2, color2)
+
+    instancedMesh.setColorAt(index1, color2);
+    instancedMesh.setColorAt(index2, color1);
+
+    instancedMesh.instanceColor.needsUpdate = true
+
+}
+
+
+function hide_instances(ids, mesh){
+    emptyMatrix = new THREE.Matrix4();
+    for (var i=0; i<ids.length; ++i){
+        mesh.setMatrixAt(i, emptyMatrix);
+        mesh.instanceMatrix.needsUpdate = true;
+    }
+}
+
+function restore_instances(ids, mesh){
+    emptyMatrix = new THREE.Matrix4();
+    for (var i=0; i<ids.length; ++i){
+        mesh.setMatrixAt(i, INSTANCE_MATRICES[i])
+        mesh.instanceMatrix.needsUpdate = true;
+    }
+}
+
+
