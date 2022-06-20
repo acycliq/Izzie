@@ -33,5 +33,4 @@ var CAMERA = null,
     RIG = null,
     nextBtn,
     prevBtn,
-    INSTANCE_MATRICES = [],
     TOOLTIP = null;

@@ -66,7 +66,7 @@ function ellipsoids_2(data, props) {
         !!uScale
     );
 
-    // var dummy = new THREE.Object3D();
+    var dummy = new THREE.Object3D();
     var bbox_items = [];
     var tree = new RBush3D.RBush3D(16)
     console.log('tic')
@@ -76,7 +76,6 @@ function ellipsoids_2(data, props) {
             scales = data[i].sphere_scale,
             rot = data[i].sphere_rotation,
             color =  data[i].color;
-        var dummy = new THREE.Object3D();
         dummy.position.set(coords.x, coords.y, coords.z);
         dummy.scale.set(scales.x*0.99, scales.y*0.99, scales.z*0.99);
         dummy.rotation.set(rot.x, rot.y, rot.z);
@@ -84,13 +83,11 @@ function ellipsoids_2(data, props) {
         INSTANCEDMESH.name = props.name;
         INSTANCEDMESH.setMatrixAt(i, dummy.matrix);
         INSTANCEDMESH.setColorAt(i, new THREE.Color( color.r, color.g, color.b ));
-        INSTANCE_MATRICES.push(dummy.matrix)
         temp_obj.applyMatrix4(dummy.matrix)
         var bbox = new THREE.Box3().setFromObject(temp_obj);
         bbox_items.push({minX: bbox.min.x, minY: bbox.min.y, minZ: bbox.min.z, maxX: bbox.max.x, maxY: bbox.max.y, maxZ: bbox.max.z, name: 'item_' + i});
         // instancedMesh.geometry.setPositionAt(i, trsCache[i].position);
         // instancedMesh.geometry.setScaleAt(i, uScale ? ss : trsCache[i].scale);
-
     }
     console.log('toc')
     INSTANCEDMESH.instanceColor.needsUpdate = true;
