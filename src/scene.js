@@ -178,7 +178,7 @@ function iniScene() {
     // })
 
     stats = new Stats();
-    container.appendChild(stats.dom);
+    // container.appendChild(stats.dom);
 
     // var axes = createAxes(1000, SCENE);
     // SCENE.add(axes)
